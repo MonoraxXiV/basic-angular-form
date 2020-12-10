@@ -1,0 +1,21 @@
+{{ friendForm.value | json }}
+
+<form #friendForm="ngForm">
+<label for="fname">First name:</label>
+<input  type="text" id="fname" name="fname" #firstName="ngModel" ngModel><br><br>
+<label for="lname">Last name:</label>
+<input type="text" id="lname" name="lname" #lastName="ngModel" ngModel><br><br>
+<label for="email">Email:</label>
+<input type="text" id="email" name="email" #email="ngModel" ngModel><br><br>
+<label for="number">Phone number:</label>
+<input type="text" id="number" name="number" #number="ngModel" ngModel><br><br>
+
+  <label for="lang">Favourite language:</label>
+    <select #language="ngModel"  name="lang" id="lang" ngModel>
+      <option *ngFor="let language of languages">{{language}}</option>
+    </select>
+
+  <button type="button">Add Friend</button>
+</form>
+
+<router-outlet></router-outlet>
