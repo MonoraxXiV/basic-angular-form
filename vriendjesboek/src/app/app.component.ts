@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Friend} from './friend';
 import {AddFriendService} from './add-friend.service';
-
+import {OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,7 @@ export class AppComponent {
   constructor(addFriendService: AddFriendService) {
     this.addFriendService = addFriendService;
   }
+
   onSubmit(): void {
     const observable = this.addFriendService.addFriend(this.friendModel);
     // added quotation marks to "it worked", might need to remove those later
@@ -29,5 +30,19 @@ export class AppComponent {
     return console.log(this.friendModel);
   }
 
+  public async displayFriend(url: string): Promise<any> {
+    const fetchFriends = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    return this.allFriends = await fetchFriends.json();
+  }
+
+  ngOnInit(): any {
+    this.displayFriend('http://localhost:9000/allFriends');
+    console.log(this.displayFriend);
+    }
 }
 
