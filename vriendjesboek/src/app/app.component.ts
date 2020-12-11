@@ -11,7 +11,7 @@ import {AddFriendService} from './add-friend.service';
 })
 export class AppComponent {
   private addFriendService: AddFriendService;
-
+  public allFriends;
   title = 'vriendjesboek';
   languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Ruby'];
   friendModel = new Friend(null, null, null, null, null);
@@ -20,10 +20,13 @@ export class AppComponent {
     this.addFriendService = addFriendService;
   }
   onSubmit(): void {
-    const observable = this.addFriendService.addFriend();
+    const observable = this.addFriendService.addFriend(this.friendModel);
     // added quotation marks to "it worked", might need to remove those later
-    observable.subscribe(data => "it worked", error => "it didn't work").
-    console.log(this.friendModel);
+    observable.subscribe(
+      succes => console.log(this.allFriends),
+      error => console.log(error)
+    );
+    return console.log(this.friendModel);
   }
 
 }

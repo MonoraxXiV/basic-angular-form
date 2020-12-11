@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-const PORT = 6969;
+const PORT = 9000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}) );
@@ -24,9 +24,18 @@ app.get('/', function (request, response) {
     response.send('Hello from server');
 });
 
+// step 16 Add a new get function with path "allFriends" and send the allFriends variable as a response.
+app.get('/allFriends', function (request, response) {
+    response.send(allFriends);
+});
+
 app.post('/', function (request, response) {
     response.status(200).send({"message": "Data received"});
 });
 
+app.post('/addFriend',function (request, response){
+    allFriends.push(request.body);
+    response.status(200).send({"message": "Data received"});
+});
 
 app.listen(PORT, function () {});
