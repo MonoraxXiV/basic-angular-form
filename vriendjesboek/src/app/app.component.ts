@@ -31,13 +31,13 @@ export class AppComponent {
   }
 
   public async displayFriend(url: string): Promise<any> {
-    const fetchFriends = await fetch(url, {
+    const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       }
     });
-    return this.allFriends = await fetchFriends.json();
+    return this.allFriends = await response.json();
   }
 
   ngOnInit(): any {

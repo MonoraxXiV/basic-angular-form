@@ -37,6 +37,16 @@
   <button [disabled]="friendForm.form.invalid ">Add Friend "</button>
 </form>
 
+<div class="container" *ngFor="let friend of allFriends">
+  <div>
+    First name: {{friend.firstName}}<br>
+    Last name: {{friend.lastName}}<br>
+    Email: {{friend.email}}<br>
+    Phone number: {{friend.phoneNumber}}<br>
+    Favorite language: {{friend.languages}}<br>
+  </div>
+  <br>
+</div>
 
 </body>
 </html>
