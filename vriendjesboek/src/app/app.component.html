@@ -12,7 +12,7 @@
 </head>
 <body>
 {{ friendModel | json }}
-<form #friendForm="ngForm" novalidate>
+<form #friendForm="ngForm" novalidate (ngSubmit)="onSubmit()">
   <label for="fname">First name:</label>
   <input type="text" id="fname" name="fname" #firstName="ngModel" [(ngModel)]="friendModel.firstName" required
          [class.error]="firstName.invalid && firstName.touched" pattern="^[A-Za-z]+$"><br><br>
@@ -25,7 +25,7 @@
          [class.error]="email.invalid && email.touched" pattern="^[0-9a-zA-Z|-|.]+@[0-9a-zA-Z|-]+.[0-9a-zA-Z|-]+$"><br><br>
   <label for="number">Phone number:</label>
   <input type="text" id="number" name="number" #number="ngModel" [(ngModel)]="friendModel.phoneNumber" required
-         pattern="/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/"
+         pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
          [class.error]="number.invalid && number .touched"><br><br>
 
   <label for="lang">Favourite language:</label>
