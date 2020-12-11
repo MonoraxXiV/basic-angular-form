@@ -12,10 +12,11 @@
 </head>
 <body>
 {{ friendModel | json }}
-<form #friendForm="ngForm">
+<form #friendForm="ngForm" novalidate>
   <label for="fname">First name:</label>
   <input type="text" id="fname" name="fname" #firstName="ngModel" [(ngModel)]="friendModel.firstName" required
          [class.error]="firstName.invalid && firstName.touched" pattern="^[A-Za-z]+$"><br><br>
+
   <label for="lname">Last name:</label>
   <input type="text" id="lname" name="lname" #lastName="ngModel" [(ngModel)]="friendModel.lastName" required
          [class.error]="lastName.invalid && lastName.touched" pattern="^[A-Za-z]+$"><br><br>
@@ -33,7 +34,7 @@
     <option *ngFor="let language of languages">{{language}}</option>
   </select>
 
-  <button type="button">Add Friend [disabled]="friendForm.form.invalid"</button>
+  <button [disabled]="friendForm.form.invalid ">Add Friend "</button>
 </form>
 
 
